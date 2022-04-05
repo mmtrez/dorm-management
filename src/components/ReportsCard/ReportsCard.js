@@ -252,7 +252,7 @@ const ReportsCard = ({
                       <TableRow>
                         <TableCell
                           style={{ paddingBottom: 0, paddingTop: 0 }}
-                          colSpan={8}
+                          colSpan={10}
                         >
                           <Collapse
                             in={open === index}
