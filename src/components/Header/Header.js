@@ -14,6 +14,7 @@ import Logo from "../../assets/images/chamranLogo.png";
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
 import NavButtons from "../NavButtons/NavButtons";
+import ChangePassDialog from "../ChangePassDialog/ChangePassDialog";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -22,9 +23,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = ({ auth, setAuth, setRole }) => {
+const Header = ({ auth, setAuth, setRole, userInfo }) => {
   const classes = useStyles();
   const [openUserMenu, setOpenUserMenu] = useState(null);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const handleOpenUserMenu = (event) => {
     setOpenUserMenu(event.currentTarget);
@@ -40,6 +42,14 @@ const Header = ({ auth, setAuth, setRole }) => {
     localStorage.setItem("auth", "0");
     localStorage.setItem("role", undefined);
     handleCloseUserMenu();
+  };
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
   };
 
   return (
@@ -80,9 +90,14 @@ const Header = ({ auth, setAuth, setRole }) => {
                 open={Boolean(openUserMenu)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">پروفایل</Typography>
+                <MenuItem onClick={handleOpenDialog}>
+                  <Typography textAlign="center">تغییر رمز</Typography>
                 </MenuItem>
+                <ChangePassDialog
+                  openDialog={openDialog}
+                  handleCloseDialog={handleCloseDialog}
+                  userInfo={userInfo}
+                />
                 <MenuItem onClick={logout}>
                   <Typography textAlign="center">خروج</Typography>
                 </MenuItem>

@@ -70,6 +70,12 @@ const columns = [
     minWidth: 170,
     align: "right",
   },
+  {
+    id: "deferredDate",
+    label: "تاریخ محول شدن",
+    minWidth: 170,
+    align: "right",
+  },
 ];
 
 const ReportsCard = ({
@@ -89,6 +95,7 @@ const ReportsCard = ({
   const [handler, setHandler] = useState("");
   const [handlerAnswer, setHandlerAnswer] = useState("");
   const [force, setForce] = useState(false);
+  const [deferredDate, setDeferredDate] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -118,11 +125,19 @@ const ReportsCard = ({
         handler: handler,
         reportState: state,
         force,
+        deferredDate: new Intl.DateTimeFormat("fa").format(new Date()),
       });
+      console.log(result);
       setReports(
         allReports.map((report) =>
           report._id === e.target.value
-            ? { ...report, handler: handler, reportState: state, force }
+            ? {
+                ...report,
+                handler: handler,
+                reportState: state,
+                force,
+                deferredDate: new Intl.DateTimeFormat("fa").format(new Date()),
+              }
             : report
         )
       );

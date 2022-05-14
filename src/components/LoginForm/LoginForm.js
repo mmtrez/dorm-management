@@ -11,7 +11,7 @@ const LoginForm = ({ setAuth, setRole, setUserInfo }) => {
     try {
       const data = {
         username: Number(userName),
-        password: Number(password),
+        password: password,
       };
       const result = await axios.post("/login", data);
       if (result.data === "کاربری با این مشخصات یافت نشد") {

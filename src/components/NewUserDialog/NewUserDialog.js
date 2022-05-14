@@ -110,7 +110,12 @@ const NewUserDialog = ({
             room,
             phoneNumber,
           });
-          result ? alert("کاربر با موفقیت ثبت شد") : alert("خطا");
+          console.log(typeof result.data);
+          result
+            ? typeof result.data === "string"
+              ? alert("شماره ملی، شماره پرسنلی یا شماره دانشجویی قبلا ثبت شده")
+              : alert("کاربر با موفقیت ثبت شد")
+            : alert("خطا");
           formik.resetForm();
           handleCloseDialog();
         } else {
@@ -127,7 +132,7 @@ const NewUserDialog = ({
           handleCloseDialog();
         }
       } catch (err) {
-        alert("خطا");
+        alert(err);
         console.log(err);
       }
     },

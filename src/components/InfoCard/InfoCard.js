@@ -70,14 +70,14 @@ const InfoCard = ({ userInfo }) => {
             </Typography>
           </ListItemText>
         </ListItem>
-        <ListItem>
+        {/* <ListItem>
           <ListItemIcon>
             <BadgeIcon />
           </ListItemIcon>
           <ListItemText>
             <Typography>{`${userInfo.socialId}`}</Typography>
           </ListItemText>
-        </ListItem>
+        </ListItem> */}
       </List>
     </Item>
   );
