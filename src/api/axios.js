@@ -1,5 +1,5 @@
-import axios from "axios";
+import axios from 'axios';
 
 export default axios.create({
-  baseURL: "https://testapiiiii.herokuapp.com/api",
+  baseURL: 'https://dorm-managment-api.onrender.com/api/',
 });
